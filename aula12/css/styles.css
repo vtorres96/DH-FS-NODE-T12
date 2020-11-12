@@ -1,0 +1,24 @@
+/* HEADER */
+header { 
+  background-color: #ffb90f;
+  height: 10%;
+  width: 100%;
+  margin-top: 70px;
+  position: relative;
+}
+
+header nav img {
+  position: absolute;
+  width: 200px;
+  margin-top: -65px;
+}
+
+header nav ul {
+  display: inline-block;
+  list-style: none;
+  margin-left: 160px;
+}
+
+header nav ul li {
+  display: inline-block;
+}
