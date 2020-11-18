@@ -1,0 +1,111 @@
+/* definindo altura da pagina para conseguir aplicar altura no
+elemento filho header */
+html, body {
+  height: 100%;
+}
+
+/* HEADER */
+header { 
+  background-color: #ffb90f;
+  height: 15%;
+  width: 100%;
+  margin-top: 70px;
+  position: relative;
+}
+
+header nav img {
+  position: absolute;
+  width: 200px;
+  margin-top: -65px;
+}
+
+header nav ul {
+  list-style: none;
+  margin-left: 160px;
+}
+
+header nav ul li {
+  display: inline-block;
+  padding: 15px 0 0 50px;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+header nav, header form {
+  display: inline-block;
+}
+
+header form { 
+  margin-left: 400px;
+}
+
+/* CONTAINER */
+.container {
+  width: 960px;
+  height: 650px;
+  margin: 40px auto;
+}
+
+/* SECTION PRODUTOS */
+.product-image {
+  background-image: url("../img/product-1.jpg");
+}
+
+.products {
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+  background-position: center;
+  background-size: cover;
+  margin: 0 15px 15px 0;
+}
+
+.img-label { 
+  width: 70px;
+  margin: 5px 0 0 226px;
+}
+
+.name-product {
+  height: 40px;
+  color: white;
+  background: #101010;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 50px;
+  padding-top: 10px;
+}
+
+.see-more { 
+  width: 90px;
+  background: #ff4500;
+  color: white;
+  height: 40px;
+  margin: 45px 0 0 110px;
+}
+
+/* FOOTER */
+footer { 
+  background-color: #ffb90f;
+  color: white;
+  text-align: center;
+  height: 100px;
+  width: 100%;
+  font-size: 20px;
+  border-radius: 20px 20px 0 0;
+  line-height: 100px;
+}
+
+/* PSEUDO-SELETORES */
+.products:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+header form input:focus {
+  outline-color: blue;
+}
