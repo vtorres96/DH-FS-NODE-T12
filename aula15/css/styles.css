@@ -7,7 +7,7 @@ html, body {
 /* HEADER */
 header { 
   background-color: #ffb90f;
-  height: 24%;
+  height: 15%;
   width: 100%;
   margin-top: 70px;
   position: relative;
@@ -76,11 +76,13 @@ section {
 }
 
 .name-product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 40px;
   color: white;
   background: #101010;
   font-size: 20px;
-  text-align: center;
 }
 
 .see-more { 
@@ -88,18 +90,22 @@ section {
   background: #ff4500;
   color: white;
   height: 40px;
+  position: relative;
+  align-self: center;
+  bottom: 30px;
 }
 
 /* FOOTER */
 footer { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #ffb90f;
   color: white;
-  text-align: center;
   height: 100px;
   width: 100%;
   font-size: 20px;
   border-radius: 20px 20px 0 0;
-  line-height: 100px;
 }
 
 /* PSEUDO-SELETORES */
