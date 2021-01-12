@@ -28,36 +28,20 @@
           <h2>Receitas</h2>
           <p>Abaixo temos as receitas mais procuradas da semana</p>
           <div class="card-deck">
-            <div class="col-12 col-md-6 col-lg-4 mt-3">
-              <div class="card">
-                <img src="/images/card-1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+
+            <% cards.forEach(card => { %>
+              <div class="col-12 col-md-6 col-lg-4 mt-3">
+                <div class="card">
+                  <img src="<%= card.caminho_de_imagem %>" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= card.titulo %> </h5>
+                    <p class="card-text"><%= card.texto %> </p>
+                    <a href="#" class="btn btn-primary"><%= card.botao %> </a>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 mt-3">
-              <div class="card">
-                <img src="/images/card-2.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 mt-3">
-              <div class="card">
-                <img src="/images/card-3.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-            </div>
+            <% }) %>
+
           </div>
         </section>
   
