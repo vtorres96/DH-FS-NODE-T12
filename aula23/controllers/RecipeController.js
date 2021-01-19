@@ -40,7 +40,6 @@ module.exports = {
     let id = req.params.id;
     let recipeIndex = recipes.findIndex(recipe => recipe.id === id);
     recipes.splice(recipeIndex, 1);
-    console.log(recipes);
 
     /* transformando o array recipes em uma string */
     let dataString = JSON.stringify(recipes);
