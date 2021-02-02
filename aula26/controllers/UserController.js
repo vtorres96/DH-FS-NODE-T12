@@ -39,12 +39,12 @@ module.exports = {
     if(!bcrypt.compareSync(password, user.password)){
       return res.render('login', { notFound: true });
     }
-
+    
     // removendo propriedade password para que o usuario logado nao trafegue com sua senha
-    delete user.password;
+    let { password: pass2, ...restOfUser } = user; 
 
     // criando sessao contendo informacoes do usuario que ira se logar
-    req.session.user = user;
+    req.session.user = restOfUser;
 
     res.render('recipes', { user: req.session.user, recipes });
   },
