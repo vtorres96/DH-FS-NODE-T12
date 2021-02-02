@@ -11,7 +11,7 @@ module.exports = {
   save(req, res, next){
     let id = users.length + 1;
     /*  criptografando a senha */
-    req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+    req.body.password = bcrypt.hashSync(req.body.password, 10);
 
     /* criando objeto para enviar adicionar no array users */
     let user = { id, ...req.body };
@@ -41,7 +41,7 @@ module.exports = {
     }
     
     // removendo propriedade password para que o usuario logado nao trafegue com sua senha
-    let { password: pass2, ...restOfUser } = user; 
+    let { password: pass, ...restOfUser } = user; 
 
     // criando sessao contendo informacoes do usuario que ira se logar
     req.session.user = restOfUser;
