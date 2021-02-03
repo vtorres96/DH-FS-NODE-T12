@@ -30,7 +30,7 @@ module.exports = {
     // obter a receita para altera-la
     let recipe = recipes.find(recipe => recipe.id == id);
 
-    res.render('edit-recipe', { recipe });
+    res.render('edit-recipe', { recipe, user: req.session.user });
   },
 
   async update(req, res, next){
