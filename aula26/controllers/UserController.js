@@ -41,10 +41,10 @@ module.exports = {
     }
     
     // removendo propriedade password para que o usuario logado nao trafegue com sua senha
-    let { password: pass, ...restOfUser } = user; 
+    let { password: pass, ...userWithoutPassword } = user; 
 
     // criando sessao contendo informacoes do usuario que ira se logar
-    req.session.user = restOfUser;
+    req.session.user = userWithoutPassword;
 
     res.render('recipes', { user: req.session.user, recipes });
   },
