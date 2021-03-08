@@ -1,0 +1,30 @@
+<%- include('./partials/head'); %> 
+  <%- include('./partials/header'); %> 
+  <main class="container">
+    <section class="mt-3" id="users">
+      <h1>Login</h1>
+      <p>Preencha os campos abaixo para efetuar login</p>
+
+      <form action="/users/authenticate" method="POST">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="input-email">E-mail</label>
+            <input type="email" class="form-control" name="email" id="input-email" placeholder="Email@exemplo.com">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="input-senha">Senha</label>
+            <input type="password" class="form-control" name="password" id="input-senha" placeholder="Insira sua senha">
+          </div>
+        </div>
+        <% if (typeof notFound !== "undefined") { %>
+          <div class="form-group col-md-12 alert alert-danger">
+            E-mail ou senha inválidos
+          </div>
+        <% } %> 
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </form>
+    </section>
+  </main>
+  <%- include('./partials/footer'); %> 
+</body>
+</html>
