@@ -5,11 +5,11 @@
   <section class="formulario mt-5" id="formulario">
     <h2>Altere sua receita</h2>
     <p>Preencha o formulário abaixo para compartilhar conosco sua receita</p>
-    <form action="/recipes/update/<%= recipe.id %> " method="POST">
+    <form action="/recipes/update/<%= recipe.id %>" method="POST">
       <div class="row">
         <div class="col">
           <label for="nome">Nome</label>
-          <input type="text" class="form-control" value="<%= recipe.nome %>" name="nome" id="nome" placeholder="Informe seu nome" aria-label="Informe seu nome">
+          <input type="text" class="form-control" value="<%= recipe.name %>" name="name" id="nome" placeholder="Informe seu nome" aria-label="Informe seu nome">
         </div>
         <div class="col">
           <label for="email">Email</label>
@@ -19,7 +19,7 @@
       <div class="row">
         <div class="col my-3">
           <label for="mensagem">Mensagem</label>
-          <textarea class="form-control" name="mensagem" id="mensagem" rows="10" placeholder="Informe a receita" aria-label="Informe a receita"><%= recipe.mensagem %></textarea>
+          <textarea class="form-control" name="message" id="mensagem" rows="10" placeholder="Informe a receita" aria-label="Informe a receita"><%= recipe.message %></textarea>
         </div>
       </div>
       <% if (typeof updated != "undefined") { %>

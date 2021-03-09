@@ -26,9 +26,9 @@
         <% recipes.forEach(recipe => { %>         
           <tr>
             <th scope="row"><%= recipe.id %> </th>
-            <td><%= recipe.nome %> </td>
+            <td><%= recipe.name %> </td>
             <td><%= recipe.email %> </td>
-            <td><%= recipe.mensagem %> </td>  
+            <td><%= recipe.message %> </td>  
             <td>
               <a href="/recipes/edit/<%= recipe.id %>">
                 <i class="fas fa-edit"></i>
@@ -47,8 +47,8 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                      Deseja realmente excluir a receita de <%= recipe.nome %> ? <br><br>
-                      <%= recipe.mensagem %>  
+                      Deseja realmente excluir a receita de <%= recipe.name %> ? <br><br>
+                      <%= recipe.message %>  
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
