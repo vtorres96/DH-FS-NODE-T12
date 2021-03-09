@@ -1,10 +1,9 @@
 const { Recipe } = require('../models');
-const recipes = require("../data/recipe");
-const saveData = require("../utils/saveData");
 
 // 1ª forma que voces podem encontrar de exportar metodos do controller
 module.exports = {
-  index(req, res, next){
+  async index(req, res, next){
+    let recipes = await Recipe.findAll();
     res.render('recipes', { recipes, user: req.session.user });
   },
 
@@ -19,39 +18,55 @@ module.exports = {
     let id = req.params.id;
 
     // obter a receita para altera-la
-    let recipe = recipes.find(recipe => recipe.id == id);
+    let recipe = await Recipe.findByPk(id);
 
     res.render('edit-recipe', { recipe, user: req.session.user });
   },
 
   async update(req, res, next){
     let id = req.params.id;
-    let { nome, email, mensagem } = req.body;
+    let { name, email, message } = req.body;
 
     // obter a receita para altera-la
-    let recipe = recipes.find(recipe => recipe.id == id);
-
-    // Alterar as propriedades do objeto que desejamos fazer update
-    recipe.nome = nome;
-    recipe.email = email;
-    recipe.mensagem = mensagem;
-
-    // executando funcao que salva alteracoes dos registros no arquivo recipe.js
-    saveData(recipes, 'recipe.js');
+    let recipe = await Recipe.findByPk(id);  
+    
+    recipe.update({
+      name,
+      email,
+      message
+    });
 
     res.render('edit-recipe', { recipe, updated: true });
   },
 
+  // Outra forma de efetuar update nos registros
+  // async update(req, res, next){
+  //   let id = req.params.id;
+  //   let { name, email, message } = req.body;
+
+  //   // obter a receita para altera-la
+  //   let recipe = await Recipe.findByPk(id);
+
+  //   // Alterar as propriedades do objeto que desejamos fazer update
+  //   recipe.name = name;
+  //   recipe.email = email;
+  //   recipe.message = message;
+
+  //   // Salvando atualizacao do registro
+  //   await recipe.save();
+
+  //   res.render('edit-recipe', { recipe, updated: true });
+  // },
+
   async delete(req, res, next){
     let id = req.params.id;
 
-    // forma de remover elemento do json
-    let recipesFilter = recipes.filter(recipe => recipe.id != id);
+    // obter a receita para altera-la
+    let recipe = await Recipe.findByPk(id);  
 
-    // executando funcao que salva alteracoes dos registros no arquivo recipe.js
-    saveData(recipesFilter, 'recipe.js');
+    recipe.destroy();
 
-    res.render('recipes', { recipes: recipesFilter, deleted: true });
+    res.redirect('/recipes');
   }
 }
 

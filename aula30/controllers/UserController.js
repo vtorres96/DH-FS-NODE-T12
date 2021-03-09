@@ -1,7 +1,5 @@
 const bcrypt = require('bcrypt');
-const users = require('../data/user');
-const recipes = require('../data/recipe');
-const saveData = require('../utils/saveData');
+const users = [];
 
 module.exports = {
   create(req, res, next){
