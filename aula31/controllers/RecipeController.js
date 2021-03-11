@@ -3,7 +3,7 @@ const { Recipe } = require('../models');
 // 1ª forma que voces podem encontrar de exportar metodos do controller
 module.exports = {
   async index(req, res, next){
-    let recipes = await Recipe.findAll();
+    let recipes = await Recipe.findAll({ limit: 10 });
     res.render('recipes', { recipes, user: req.session.user });
   },
 
