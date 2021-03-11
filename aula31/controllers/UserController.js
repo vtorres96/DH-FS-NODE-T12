@@ -1,23 +1,20 @@
+const { User, Recipe } = require('../models');
 const bcrypt = require('bcrypt');
-const users = [];
 
 module.exports = {
   create(req, res, next){
     res.render('create-user');
   },
 
-  save(req, res, next){
-    let id = users.length + 1;
+  async save(req, res, next){
     /*  criptografando a senha */
     req.body.password = bcrypt.hashSync(req.body.password, 10);
 
     /* criando objeto para enviar adicionar no array users */
-    let user = { id, ...req.body };
-    /* adicionando objeto dentro do array users */
-    users.push(user);
+    let user = { ...req.body };
 
-    /* cadastrando no arquivo user.js que sera nosso json de usuarios */
-    saveData(users, 'user.js');
+    /* adicionando objeto dentro do banco na tabeka users */
+    await User.create(user);
     
     res.render('create-user', { added: true });
   },
@@ -26,9 +23,11 @@ module.exports = {
     res.render('login');
   },
 
-  authenticate(req, res, next){
+
+  async authenticate(req, res, next){
     let { email, password } = req.body;
-    let user = users.find(user => user.email == email);
+    let user = await User.findOne({ where: { email } });
+    let recipes = await Recipe.findAll();
 
     if(!user){
       return res.render('login', { notFound: true });
@@ -38,11 +37,11 @@ module.exports = {
       return res.render('login', { notFound: true });
     }
     
-    // removendo propriedade password para que o usuario logado nao trafegue com sua senha
-    let { password: pass, ...userWithoutPassword } = user; 
+    // removendo o valor propriedade password para que o usuario logado nao trafegue com sua senha
+    user.password = undefined;
 
     // criando sessao contendo informacoes do usuario que ira se logar
-    req.session.user = userWithoutPassword;
+    req.session.user = user;
 
     res.render('recipes', { user: req.session.user, recipes });
   },

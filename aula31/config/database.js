@@ -1,8 +1,8 @@
 const config = {
-  username: process.env.USER,
-  password: process.env.PASSWORD,
-  database: process.env.DATABASE,
-  host: process.env.HOST,
+  username: 'root',
+  password: '',
+  database: 'dh_fs_node12',
+  host: 'localhost',
   dialect: 'mysql' 
 }
 
