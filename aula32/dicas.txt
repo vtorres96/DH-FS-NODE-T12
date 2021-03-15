@@ -73,3 +73,12 @@ module.exports = (sequelize, DataType) => {
 	});
 	return User;
 };
+
+limit = limita quantidade de registros a serem exibidos 
+offset = com base no valor indicado no limit, indica o intervalo de registros exibidos,
+se definido como 0 trará informações do registro de ID 1 ao ID 10.
+
+Crio limitador em um layout para exibir 10 registros por página, no caso, se colocarmos um
+offset de 0, as informações exibidas serão os registros de ID 1 ao ID 10
+Crio limitador em um layout para exibir 10 registros por página, no caso, se colocarmos um
+offset de 1, as informações exibidas serão os registros de ID 11 ao ID 20
