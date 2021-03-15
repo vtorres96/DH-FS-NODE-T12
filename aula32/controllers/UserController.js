@@ -1,4 +1,4 @@
-const { User, Recipe } = require('../models');
+const { User } = require('../models');
 const bcrypt = require('bcrypt');
 
 module.exports = {
@@ -23,11 +23,9 @@ module.exports = {
     res.render('login');
   },
 
-
   async authenticate(req, res, next){
     let { email, password } = req.body;
     let user = await User.findOne({ where: { email } });
-    let recipes = await Recipe.findAll();
 
     if(!user){
       return res.render('login', { notFound: true });
@@ -43,7 +41,7 @@ module.exports = {
     // criando sessao contendo informacoes do usuario que ira se logar
     req.session.user = user;
 
-    res.render('recipes', { user: req.session.user, recipes });
+    res.redirect('/recipes');
   },
 
   logout(req, res, next){
