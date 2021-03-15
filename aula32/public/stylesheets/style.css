@@ -40,7 +40,7 @@ form textarea {
 }
 
 #recipes { 
-  height: calc(100vh - 213px);  
+  height: calc(100vh - 80px);  
 }
 
 #users { 
