@@ -1,0 +1,37 @@
+<%- include('./partials/head'); %> 
+<%- include('./partials/header'); %> 
+
+<main class="container">
+  <section class="formulario mt-5" id="formulario">
+    <h2>Altere sua receita</h2>
+    <p>Preencha o formulário abaixo para compartilhar conosco sua receita</p>
+    <form action="/recipes/update/<%= recipe.id %>" method="POST">
+      <div class="row">
+        <div class="col">
+          <label for="nome">Nome</label>
+          <input type="text" class="form-control" value="<%= recipe.name %>" name="name" id="nome" placeholder="Informe seu nome" aria-label="Informe seu nome">
+        </div>
+        <div class="col">
+          <label for="email">Email</label>
+          <input type="text" class="form-control" value="<%= recipe.email %>" name="email" id="email" placeholder="Informe seu e-mail" aria-label="Informe seu e-mail">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col my-3">
+          <label for="mensagem">Mensagem</label>
+          <textarea class="form-control" name="message" id="mensagem" rows="10" placeholder="Informe a receita" aria-label="Informe a receita"><%= recipe.message %></textarea>
+        </div>
+      </div>
+      <% if (typeof updated != "undefined") { %>
+       <div class="form-group col-md-12 alert alert-success">
+         Receita alterada com sucesso
+       </div>
+      <% } %>
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+  </section>
+</main>
+
+<%- include('./partials/footer'); %> 
+</body>
+</html>
