@@ -1,10 +1,24 @@
-const { Recipe } = require('../models');
+const { Recipe, Sequelize } = require('../models');
 
 // 1ª forma que voces podem encontrar de exportar metodos do controller
 module.exports = {
   async index(req, res, next){
-    let recipes = await Recipe.findAll({ limit: 10 });
-    res.render('recipes', { recipes, user: req.session.user });
+    let { word = '', page = 1 } = req.query;
+    page = parseInt(page)
+    let limit = 10;
+
+    let {count: size, rows: recipes} = await Recipe.findAndCountAll({
+      where: {
+        message: { [Sequelize.Op.like]: `%${word}%` }
+      },
+      order: ['id'],
+      limit: limit,
+      offset: ((page - 1) * limit)
+    });
+
+    let totalPages = Math.ceil(size / limit);
+
+    res.render('recipes', { recipes, user: req.session.user, page, totalPages, word });
   },
 
   async save(req, res, next){
