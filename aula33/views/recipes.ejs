@@ -83,9 +83,14 @@
       <ul class="pagination">
         <li class="page-item">
           <% 
+            let wordHref = ''
+            if(word !== ''){
+              wordHref = 'word=' + word + '&'
+            }
+
             let hrefPrevious = ''
-            if(totalPages > page){
-              hrefPrevious = '/recipes?page=' + (page - 1)
+            if(page > 1){
+              hrefPrevious = '/recipes?' + wordHref + 'page=' + (page - 1)
             }
           %> 
           <a class="page-link" href="<%= hrefPrevious %>" aria-label="Previous">
@@ -97,7 +102,7 @@
           <% 
             let hrefNext = ''
             if(totalPages > page){
-              hrefNext = '/recipes?page=' + (page + 1)
+              hrefNext = '/recipes?' + wordHref + 'page=' + (page + 1)
             }
           %> 
           <a class="page-link" href="<%= hrefNext %>" aria-label="Next">
