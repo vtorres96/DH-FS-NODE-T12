@@ -1,0 +1,84 @@
+Instalar sequelize e sequelize-cli (o sequelize-cli deve ser instalado como dependencia de desenvolvimento)
+
+yarn add sequelize
+yarn add sequelize-cli -D devDependencies
+
+
+Criar pasta config com arquivo  database.js para fazer a conexao com o banco de dados
+
+const config = {
+  username: 'root',
+  password: '',
+  database: 'dh_fs_node10',
+  host: 'localhost',
+  dialect: 'mysql' 
+}
+
+module.exports = config;
+
+
+Criar pasta database e dentro dela criar pasta migrations
+
+Criar arquivo .sequelizerc e colocar os caminhos da pasta migrations e de config/database.js
+
+const path = require("path");
+
+module.exports = {
+  config: path.resolve("config", "database.js"),
+  'migrations-path': path.resolve("database", "migrations"),
+}
+
+
+Criar migration para futuramente essa migration se tornar uma tabela no banco de dados
+yarn sequelize migration:generate --name create_users_table
+npx sequelize migration:generate --name create_users_table
+
+Executar a migration para criar a tabela users no banco de dados
+Antes se der erro terá que instalar o pacote mysql2 com o comando: yarn add mysql2
+yarn sequelize db:migrate
+npx sequelize db:migrate
+
+Criar pasta de models com o comando 
+yarn sequelize init:models
+npx sequelize init:models
+
+Alterar o arquivo index removendo variaveis .env, pois, neste projeto não temos .env
+
+Alterar arquivo .sequelizerc e colocar os caminhos da pasta model
+
+'models-path': path.resolve("models"),
+
+criando um model sem comandos do sequelize
+
+module.exports = (sequelize, DataType) => {
+	const User = sequelize.define(
+		'User', 
+	{
+    id: {
+      type: DataType.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    name: {
+			type: DataType.STRING,
+		},
+		email: {
+			type: DataType.STRING,
+		},
+		password:{
+			type: DataType.STRING,
+		}
+	},{
+    tableName: 'users',
+	});
+	return User;
+};
+
+limit = limita quantidade de registros a serem exibidos 
+offset = com base no valor indicado no limit, indica o intervalo de registros exibidos,
+se definido como 0 trará informações do registro de ID 1 ao ID 10.
+
+Crio limitador em um layout para exibir 10 registros por página, no caso, se colocarmos um
+offset de 0, as informações exibidas serão os registros de ID 1 ao ID 10
+Crio limitador em um layout para exibir 10 registros por página, no caso, se colocarmos um
+offset de 1, as informações exibidas serão os registros de ID 11 ao ID 20
