@@ -1,0 +1,11 @@
+/* ADICIONANDO TRANSITION PARA AS IMAGENS E OS CARDS E DEIXAR MAIS SMOOTH */
+.ser-icon .img-fluid,
+.services-inner-box,
+.logo,
+#mainNav {
+  transition: all .3s;
+}
+
+.grow {
+  transform: scale(1.1);
+}
