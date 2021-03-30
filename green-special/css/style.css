@@ -9,3 +9,8 @@
 .grow {
   transform: scale(1.1);
 }
+
+.focus {
+  background-color: rgba(141, 189, 86, .8);
+  box-shadow: 0 0 0 4px rgb(141 189 86 / 40%) !important;
+}

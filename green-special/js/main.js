@@ -122,3 +122,124 @@ imagensDosCards.forEach((imagem) => { // CRIANDO UM LOOP PARA ADICIONAR O EVENTO
 //   });
 
 // });
+
+// AULA 4 - FORMULÁRIOS
+
+// VERDADINHA OU FALSINHA
+
+// 0, null, undefined, NaN, "", false = falsy
+
+// {}, [], 15, 12.1, new Date(), "Oie", " " = truthy
+
+// const nameInput = document.querySelector('#name'); // Capturando o input name
+
+// DESAFIO - Mudar a cor de fundo do nameInput quando ele receber foco
+
+// nameInput.addEventListener('focus', function () { // Capturando o evento focus
+//   nameInput.style.backgroundColor = "rgba(141, 189, 86, .8)"; // Mudando a cor do background
+//   nameInput.style.boxShadow = "0 0 0 4px rgb(141 189 86 / 40%)" // Adicionando shadow box
+// });
+
+// DESAFIO - Capturar o evento blur no nameInput e mudar o backgroundColor para rgba(141, 189, 86) e o boxShadow para "none"
+
+// nameInput.addEventListener('blur', function () { // Capturando o evento blur
+//   nameInput.style.backgroundColor = "rgba(141, 189, 86)"; // Mudando a cor do background para a anterior
+//   nameInput.style.boxShadow = "none" // Removendo o shadow box
+// });
+
+// DESAFIO - Adicionem e removam a classe focus ao invés de aplicar o estilo diretamente
+
+// nameInput.addEventListener('focus', function () {
+//   this.classList.toggle('focus'); // Usando a função toggle para adicionar a classe focus quando o input estiver focado
+// });
+
+// nameInput.addEventListener('blur', function () {
+//   this.classList.toggle('focus'); // Usando a função toggle para remover a classe focus quando o input estiver com blur
+// });
+
+const formFields = document.querySelectorAll('#contactForm .form-control'); // Buscando todos os inputs de dentro do form
+
+formFields.forEach(function (input) { // Passando por cada input do form
+  input.addEventListener('focus', function () {
+    this.classList.add('focus'); // Adicionando a classe focus quando o input receber foco
+  });
+
+  input.addEventListener('blur', function () {
+    this.classList.remove('focus'); // Removendo a classe focus quando o input receber blur
+  })
+});
+
+const form = document.querySelector('#contactForm'); // Capturando o form
+
+// Buscando cada input
+const nameInput = formFields[0];
+const emailInput = formFields[1];
+const dateInput = formFields[2];
+const timeInput = formFields[3];
+const messageInput = formFields[4];
+
+// Forma alternativa utilizando desestruturação
+// const [ nameInput, emailInput, dateInput, timeInput, messageInput ] = formFields;
+
+const invalidFields = document.querySelectorAll('#contactForm .help-block.text-danger'); // Capturando todos os p para mensagem de erro
+
+form.onsubmit = function (event) { // Capturando o evento submit do form
+  const errors = []; // Criando uma variável para guardar todos os erros
+
+  if (!nameInput.value.trim()) { // Verificando se o campo está vazio
+    invalidFields[0].textContent = "Nome obrigatório"; // Se sim colocaremos uma mensagem de erro
+    errors.push(invalidFields[0].textContent) // E inserimos ele no array errors
+  } else {
+    invalidFields[0].textContent = ""; // Se não, deixamos o campo de erro vazio
+  }
+
+  if (!emailInput.value.trim()) {
+    invalidFields[1].textContent = "Email obrigatório";
+    errors.push(invalidFields[1].textContent)
+  } else {
+    invalidFields[1].textContent = "";
+  }
+
+  if (!dateInput.value.trim()) {
+    invalidFields[2].textContent = "Data obrigatória";
+    errors.push(invalidFields[2].textContent)
+  } else {
+    invalidFields[2].textContent = "";
+  }
+
+  if (!timeInput.value.trim()) {
+    invalidFields[3].textContent = "Hora obrigatória";
+    errors.push(invalidFields[3].textContent)
+  } else {
+    invalidFields[3].textContent = "";
+  }
+
+  if (!messageInput.value.trim()) {
+    invalidFields[4].textContent = "Mensagem obrigatória";
+    errors.push(invalidFields[4].textContent)
+  } else {
+    invalidFields[4].textContent = "";
+  }
+
+  
+
+  // FORMA ALTERNATIVA
+  // invalidFields[0].textContent = `${!nameInput.value.trim() ? "Nome obrigatório" : ""}`
+  // invalidFields[1].textContent = `${!emailInput.value.trim() ? "Email obrigatório" : ""}`
+  // invalidFields[2].textContent = `${!dateInput.value.trim() ? "Data obrigatória" : ""}`
+  // invalidFields[3].textContent = `${!timeInput.value.trim() ? "Hora obrigatória" : ""}`
+  // invalidFields[4].textContent = `${!messageInput.value.trim() ? "Mensagem obrigatória" : ""}`
+
+  // const errors = [ ...invalidFields].filter(field => field.textContent); // Criando um novo array e filtrando qual campo teve erro
+
+  // DESAFIO - Verificar se tem algum erro e se tiver evitar que o form seja enviado
+
+  if (errors.length != 0) { // Verificando se a quantidade de erros é diferente de zero
+    event.preventDefault(); // Se for, o form será impedido de enviar
+  }
+
+  // ALTERNATIVA UTILIZANDO FALSY
+  // if (errors.length) { // Verificando se tem algum erro
+  //   event.preventDefault(); // Se tiver erro, o form será impedido de enviar
+  // }
+};
