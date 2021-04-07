@@ -42,5 +42,5 @@ DESAFIO DE UM PROCESSO SELETIVO AO VIVO
     3 - Criar definição/configuração do model
 
   # Sexta Etapa - 26 minutos
-  1 - Criar o arquivo src/controller/TaskController.js
+  1 - Criar o arquivo src/controllers/TaskController.js
   2 - Configurar os métodos create, index, getById, update, delete
