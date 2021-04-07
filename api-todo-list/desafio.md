@@ -36,11 +36,11 @@ DESAFIO DE UM PROCESSO SELETIVO AO VIVO
   o erro a seguir: Please install mysql2 package manually. <br/>
   Instale o módulo mysql2 no projeto. <br/>
 
-  # Quinta Etapa - 8 minutos
+  # Quinta Etapa - 9 minutos
     1 - Criar o arquivo src/models/index.js (a partir de um comando do sequelize)
     2 - Criar o arquivo src/models/Task.js
     3 - Criar definição/configuração do model
 
   # Sexta Etapa - 26 minutos
-  1 - Criar o arquivo src/controller/TaskController
+  1 - Criar o arquivo src/controller/TaskController.js
   2 - Configurar os métodos create, index, getById, update, delete
