@@ -37,8 +37,10 @@ DESAFIO DE UM PROCESSO SELETIVO AO VIVO
   Instale o módulo mysql2 no projeto. <br/>
 
   # Quinta Etapa - 8 minutos
-    1 - Criar a pasta de models (a partir de um comando do sequelize)
+    1 - Criar o arquivo src/models/index.js (a partir de um comando do sequelize)
     2 - Criar o arquivo src/models/Task.js
     3 - Criar definição/configuração do model
 
   # Sexta Etapa - 26 minutos
+  1 - Criar o arquivo src/controller/TaskController
+  2 - Configurar os métodos create, index, getById, update, delete
