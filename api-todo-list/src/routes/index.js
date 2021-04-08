@@ -1,8 +1,8 @@
 const { Router } = require('express')
 const router = Router()
 
-router.get('/', function(req, res, next) {
-  res.send('Hallo Word');
-});
+const TaskController = require('../controllers/TaskController')
+
+router.post('/api/task/create', TaskController.create)
 
 module.exports = router
