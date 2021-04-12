@@ -6,11 +6,20 @@ module.exports = (sequelize, DataType) => {
       autoIncrement: true,
       allowNull: false,
     },
-    title: DataType.STRING,
+    title: { 
+      type: DataType.STRING,
+      allowNull: false, 
+    },
     description: DataType.STRING,
-    done: DataType.BOOLEAN,
-    deleted: DataType.BOOLEAN,
-    },{
+    done: {
+      type: DataType.BOOLEAN,
+      defaultValue: false,
+    },
+    deleted: {
+      type: DataType.BOOLEAN,
+      defaultValue: false,
+    },
+  },{
     tableName: 'tasks',
     timestamps: false
 	});
