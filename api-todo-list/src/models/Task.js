@@ -22,6 +22,6 @@ module.exports = (sequelize, DataType) => {
   },{
     tableName: 'tasks',
     timestamps: false
-	});
-	return Task;
-};
+	})
+	return Task
+}
