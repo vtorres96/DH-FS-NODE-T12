@@ -15,10 +15,10 @@ module.exports = {
 	    deleted: Sequelize.BOOLEAN,
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE,
-    });
+    })
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('tasks');
+    await queryInterface.dropTable('tasks')
   }
 };
