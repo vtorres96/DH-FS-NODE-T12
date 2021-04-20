@@ -1,0 +1,6 @@
+.header {
+  display: flex;
+  height: 100px;
+  color: #ccc;
+  justify-content: center;
+}
