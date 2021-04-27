@@ -1,0 +1,32 @@
+.list-tasks {
+  width: 90%;
+  margin: 20px auto;
+  max-height: 300px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.no-tasks { 
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+  color: #bbb;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  padding-bottom: 5px;
+}
+
+.list-item span {
+  color: #999;
+}
+
+.btn-icons {
+  color: #bbb;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 10px;
+}
