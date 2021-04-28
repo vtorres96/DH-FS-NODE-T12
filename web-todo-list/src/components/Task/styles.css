@@ -1,0 +1,17 @@
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  padding-bottom: 5px;
+}
+
+.list-item span {
+  color: #999;
+}
+
+.btn-icons {
+  color: #bbb;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 10px;
+}
