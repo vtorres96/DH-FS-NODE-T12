@@ -1,22 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext } from 'react'
+import { TaskContext } from '../../context/TaskContext'
+
 import Task from '../Task'
-import api from '../../services/api'
+
 import './styles.css'
 
 function TaskList(){
-  const [tasks, setTasks] = useState([])
-
-  useEffect(() => {
-    async function getTasks(){
-      try {
-        const { data } = await api.get('/api/task/list')
-        setTasks(data)
-      } catch (error) {
-        console.log('Ocorreu um erro ao efetuar requisição' + error)
-      }
-    }
-    getTasks()
-  }, [])
+  const { tasks } = useContext(TaskContext)
 
   return (
     <div>
