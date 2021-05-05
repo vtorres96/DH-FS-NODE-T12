@@ -18,10 +18,26 @@ const TaskContextProvider = (props) => {
     getTasks()
   }, [])
 
+  const findTaskById = async (id) => {
+    try {
+      const { data } = await api.get('/api/task/get-by-id/' + id)
+      console.log(data)
+    } catch (error) {
+      console.log('Ocorreu um erro ao obter o registro ' + error)
+    }
+  }
+
+  const deleteTask = (id) => {console.log(id)}
+
+  const doneTask = (id) => {console.log(id)}
+
   return (
     <TaskContext.Provider 
       value={{
         tasks,
+        deleteTask,
+        findTaskById,
+        doneTask,
       }}
     >
       {props.children}
