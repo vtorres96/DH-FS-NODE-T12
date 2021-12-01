@@ -53,8 +53,8 @@ yarn sequelize seeder:generate --name tasks
 npx sequelize seeder:generate --name tasks
 
 Executar o seeder para inserir o registro na tabela tasks
-yarn sequelize db:seed
-npx sequelize db:seed
+yarn sequelize-cli db:seed:all
+npx sequelize-cli db:seed:all
 
 Alterar o arquivo index removendo variaveis .env, pois, neste projeto não temos .env
 
