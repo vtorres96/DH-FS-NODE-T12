@@ -21,11 +21,13 @@ Criar pasta database e dentro dela criar pasta migrations
 
 Criar arquivo .sequelizerc e colocar os caminhos da pasta migrations e de config/database.js
 
-const path = require("path");
+const path = require('path');
 
 module.exports = {
-  config: path.resolve("config", "database.js"),
-  'migrations-path': path.resolve("database", "migrations"),
+  config: path.resolve('src', 'config', 'database.js'),
+  'migrations-path': path.resolve('src', 'database', 'migrations'),
+  'seeders-path': path.resolve('src', 'database', 'seeders'),
+  'models-path': path.resolve('src', 'models')
 }
 
 
@@ -38,40 +40,40 @@ Antes se der erro terá que instalar o pacote mysql2 com o comando: yarn add mys
 yarn sequelize db:migrate
 npx sequelize db:migrate
 
-Criar pasta de models com o comando 
+Criar pasta de models com comando 
 yarn sequelize init:models
 npx sequelize init:models
 
+Criar model com comando
+yarn sequelize model:generate --name Task --attributes title:string,desion:string,done:boolean,deleted:boolean
+npx sequelize model:generate --name Task --attributes title:string,desion:string,done:boolean,deleted:boolean
+
+Criar seeder com comando
+yarn sequelize seeder:generate --name tasks
+npx sequelize seeder:generate --name tasks
+
+Executar o seeder para inserir o registro na tabela tasks
+yarn sequelize db:seed
+npx sequelize db:seed
+
 Alterar o arquivo index removendo variaveis .env, pois, neste projeto não temos .env
 
-Alterar arquivo .sequelizerc e colocar os caminhos da pasta model
-
-'models-path': path.resolve("models"),
-
 criando um model sem comandos do sequelize
-
 module.exports = (sequelize, DataType) => {
-	const User = sequelize.define(
-		'User', 
-	{
-    id: {
-      type: DataType.INTEGER,
-      primaryKey: true,
-      autoIncrement: true
-    },
-    name: {
-			type: DataType.STRING,
-		},
-		email: {
-			type: DataType.STRING,
-		},
-		password:{
-			type: DataType.STRING,
-		}
+	const Task = sequelize.define('Task', {
+	    id: {
+	      type: DataType.INTEGER,
+	      primaryKey: true,
+	      autoIncrement: true
+	    },
+    	    title: DataType.STRING,
+	    description: DataType.STRING,
+	    done: DataType.BOOLEAN,
+	    deleted: DataType.BOOLEAN,
 	},{
-    tableName: 'users',
+	   tableName: 'tasks',
 	});
-	return User;
+	return Task;
 };
 
 limit = limita quantidade de registros a serem exibidos 
